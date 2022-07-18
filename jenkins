@@ -1,1 +1,37 @@
+pipeline{
+    agent any
+    stages{
+        stage("test"){
+            steps{
 
+                // mvn test
+                echo "========executing A========"
+            }
+        }
+        stage("build"){
+            steps{
+                // mvn install
+
+                echo "========executing A========"
+            }
+        }
+        stage("deploy-prod"){
+            steps{
+
+                // deploy into server
+                echo "========executing A========"
+            }
+        }
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
+}
