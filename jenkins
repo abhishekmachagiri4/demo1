@@ -1,25 +1,25 @@
 pipeline{
     agent any
+    tools { 
+        maven 'maven'
+    }
     stages{
         stage("test"){
             steps{
-
                 // mvn test
-                echo "========executing A========"
+                sh "mvn --version"
+        
             }
         }
         stage("build"){
             steps{
-                // mvn install
-
-                echo "========executing A========"
+                sh mvn install
             }
         }
         stage("deploy-prod"){
             steps{
 
-                // deploy into server
-                echo "========executing A========"
+                deploy adapters: [tomcat9(credentialsId: 'tomcatdetails1', path: '', url: 'http://18.212.118.12:8080')], contextPath: '/app', war: '**/*.war'     
             }
         }
     }
