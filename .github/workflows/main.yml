@@ -1,10 +1,9 @@
-name: Deploy Application
+name: RepoB Workflow
 
 on:
-  workflow_run:
-    workflows: ["Build Application"]
+  repository_dispatch:
     types:
-      - completed
+      - repo-a-workflow-completed
 
 jobs:
   deploy:
@@ -12,8 +11,8 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
 
 
-      # Add your deployment steps here
+
